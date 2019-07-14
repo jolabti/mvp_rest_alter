@@ -19,10 +19,8 @@ public class MainPresenter implements GlobalContract.PresenterContract {
     public  MainPresenter(GlobalContract.MainActivityContract iMainView){
 
         this.iMainView = iMainView;
+
     }
-
-
-
 
     @Override
     public void consumePhotos() {
@@ -31,6 +29,7 @@ public class MainPresenter implements GlobalContract.PresenterContract {
 
         GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
         Call<List<PhotosDetailResponse>> call = service.getAllPhotos();
+        //Call<List<PhotosDetailResponse>> call = service.getAllPhotos();
 
 
         call.enqueue(new Callback<List<PhotosDetailResponse>>() {
@@ -43,8 +42,12 @@ public class MainPresenter implements GlobalContract.PresenterContract {
 
                     iMainView.generateToast("Response -->" + response.code());
 
+
                     List<PhotosDetailResponse> listRoot = response.body();
 
+
+
+                    // Kasih data list ke tampilan
                     iMainView.populatePhotos(listRoot);
 
                     iMainView.showProcess(false);

@@ -11,7 +11,7 @@
         android:layout_height="80dp"
         android:orientation="horizontal"
         android:layout_margin="5dp"
-        android:background="#f2efcd"
+        android:background="#ededed"
 
         >
 
