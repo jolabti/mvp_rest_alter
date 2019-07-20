@@ -6,22 +6,48 @@ import xyz.jncode.mvp_alter_rest.Model.PhotosDetailResponse;
 
 public interface GlobalContract {
 
-    interface PresenterContract{
+
+    // Buat Main Activity
+
+    interface PresenterContract {
 
 
-                void consumePhotos();
-                void showToast(String message);
+        void consumePhotos();
+
+        void showToast(String message);
+
+    }
+
+
+    interface MainActivityContract {
+
+        void showProcess(boolean boolCondition);
+
+        void populatePhotos(List<PhotosDetailResponse> generatedList);
+
+        void generateToast(String message);
+
 
     }
 
-    interface MainActivityContract{
+    //===========================================================================================================================
 
-                void showProcess(boolean boolCondition);
 
-                void populatePhotos(List<PhotosDetailResponse> generatedList);
+    // Buat upload form
+    interface UploadPresenterContract {
 
-                void generateToast(String message);
-
+        void postUploadToDb(int product, int user, int qty, String date, Double amount);
 
     }
+
+
+    interface UploadFormActivityContract {
+
+
+        void showNotification(String message);
+
+    }
+
+    //==================================================================================
+
 }
